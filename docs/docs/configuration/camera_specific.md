@@ -142,6 +142,7 @@ go2rtc:
 
 [See the go2rtc docs for more information](https://github.com/AlexxIT/go2rtc/tree/v1.2.0#source-rtsp)
 
+
 In the Unifi 2.0 update Unifi Protect Cameras had a change in audio sample rate which causes issues for ffmpeg. The input rate needs to be set for record and rtmp if used directly with unifi protect.
 
 ```yaml
@@ -150,3 +151,7 @@ ffmpeg:
     record: preset-record-ubiquiti
     rtmp: preset-rtmp-ubiquiti # recommend using go2rtc instead
 ```
+
+### TP-Link VIGI Cameras
+
+TP-Link VIGI cameras need some adjustments to the main stream settings on the camera itself to avoid issues. The stream needs to be configured as `H264` with `Smart Coding` set to `off`. Without these settings you may have problems when trying to watch recorded events. For example Firefox will stop playback after a few seconds and show the following error message: `The media playback was aborted due to a corruption problem or because the media used features your browser did not support.` 
